@@ -41,7 +41,7 @@ __interrupt void USCI_A0_ISR(void)
             buffer[buffer_index] = UCA0RXBUF; // 读取接收的数据
             buffer_index++;
             //OLED_ShowChar(0, 2, UCA0RXBUF, 8); // for debug
-            if (buffer[buffer_index-1] == '$') // '$' 标志结束
+            if (buffer[buffer_index-1] == '~') // '~' 标志结束
             {
                 buffer[buffer_index-1] = '\0';
                 //OLED_Clear();

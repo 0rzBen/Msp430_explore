@@ -26,7 +26,7 @@ yb_uart = UART(UART.UART1, 9600, 8, 0, 0, timeout=1000, read_buf_len=4096)
 
 
 last_time = time.ticks_ms()
-write_bytes = b'Loading...$'
+write_bytes = b'Loading...~'
 
 try:
     while True:
@@ -48,7 +48,7 @@ try:
         index_mnist = out.index(max_mnist)
         #score = KPU.sigmoid(max_mnist)
         display_str = "num: %d" % index_mnist
-        write_bytes = b"num: %d$" % index_mnist
+        write_bytes = b"num: %d~" % index_mnist
         print(display_str)
 
 
