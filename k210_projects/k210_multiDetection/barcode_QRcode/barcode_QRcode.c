@@ -45,7 +45,7 @@ __interrupt void USCI_A0_ISR(void)
             if (buffer[buffer_index-1] == '~') // '~' 标志结束
             {
                 buffer[buffer_index-1] = '\0';
-                OLED_Clear();
+                OLED_Clearlines(4, 4);
                 OLED_ShowString(0, 4, buffer, 8); // 显示接收到的数据
                 buffer_index = 0; // 重置缓冲区索引
             }

@@ -29,6 +29,7 @@ void IIC_Start();
 void IIC_Wait_Ack();
 void OLED_Init(void);
 void OLED_Clear(void);
+void OLED_Clearlines(u8 s, u8 e);
 void OLED_Display_On(void);
 void Delay_1ms(u16 Del_1ms);
 void OLED_Display_Off(void);
@@ -48,3 +49,4 @@ void OLED_ShowString(u8 x,u8 y, u8 *p,u8 Char_Size);
 void OLED_DrawBMP(u8 x0, u8 y0,u8 x1, u8 y1,u8 BMP[]);
  
 #endif
+

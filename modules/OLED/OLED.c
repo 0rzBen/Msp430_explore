@@ -122,6 +122,21 @@ void OLED_Clear(void)                   //清屏，清完是黑的
             OLED_WR_Byte(0,OLED_DATA);
     }
 }
+
+void OLED_Clearlines(u8 s, u8 e)//0-7
+{
+    u8 i,n;
+    for(i=s;i<=e;i++)                    //y = 8 清屏y轴的8行
+    {
+        OLED_WR_Byte (0xb0+i,OLED_CMD); //0111 0000 + i ，选中清屏的行
+        OLED_WR_Byte (0x00,OLED_CMD);
+        OLED_WR_Byte (0x10,OLED_CMD);   //0001 0000
+        for(n=0;n<128;n++)              //x = 128 清屏x轴的128列
+            OLED_WR_Byte(0,OLED_DATA);
+     }
+
+
+}
 void OLED_On(void)  //开启OLED
 {
     u8 i,n;
@@ -223,7 +238,7 @@ void OLED_ShowString(u8 x,u8 y,u8 *chr,u8 Char_Size)
     }
 }
 //显示汉字
-//使用：OLED_ShowCHinese(0,4,0);    //"电"
+//使用：OLED_ShowCHinese(0,4,0);    //"单"
 //x：列    y：行    no:数组中第几个汉字
 void OLED_ShowCHinese(u8 x,u8 y,u8 no)
 {
@@ -264,7 +279,7 @@ void OLED_DrawBMP(u8 x0, u8 y0,u8 x1, u8 y1,u8 BMP[])
 void OLED_Init(void)
 {
     //若使用其他端口，这里要修改为对应端口
-    P3DIR |= BIT5+BIT6;             //设置为输出
+    P3DIR |= BIT5+BIT6;             //设置为输出;分别SCLK,SDA
     OLED_WR_Byte(0xAE,OLED_CMD);    //显示关闭
     OLED_WR_Byte(0x00,OLED_CMD);    //设置低列地址
     OLED_WR_Byte(0x10,OLED_CMD);    //设置高位列地址
@@ -294,3 +309,4 @@ void OLED_Init(void)
     OLED_WR_Byte(0xAF,OLED_CMD);    //打开oled面板
 }
  
+
