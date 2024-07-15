@@ -188,7 +188,7 @@ def mode_objects_detection(anchors, labels = None, model_addr="/sd/KPU/yolov2_si
                     msg = "%s : %.2f" %(labels[obj.classid()], obj.value())
                     img.draw_string(pos[0], pos[1], msg, scale=2, color=(255, 0, 0))
 
-            if time.ticks_ms() - last_time > 2000:
+            if time.ticks_ms() - last_time > 2500:
                 last_time = time.ticks_ms()
                 uart.write(msg+'~')
                 #comm.send_detect_result(objects, labels)
@@ -262,9 +262,12 @@ def main():
         img.draw_string(3, 45, "1. Digit", color=(10, 50, 200), scale=2)
         img.draw_string(3, 85, "2. Object", color=(10, 50, 200), scale=2)
         img.draw_string(3, 125, "3. bar&QR", color=(10, 50, 200), scale=2)
-        lcd.display(img)
+
         if uart.any():
             mode = int(uart.read().decode('utf-8'))
+        img.draw_string(150, 3, "%d" % mode, color=(210, 210, 210), scale=2)
+
+        lcd.display(img)
 
 
     while True:
