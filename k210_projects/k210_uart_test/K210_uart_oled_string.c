@@ -33,7 +33,7 @@ int main(void)
 //  __bis_SR_register(LPM0_bits + GIE);       // Enter LPM0, interrupts enabled
 //  __no_operation();                         // For debugger
 
-    OLED_ShowString(0, 0, "Newjeans", 8);
+    OLED_ShowString(0, 0, "Noooo", 8);
 
     while(1)
     {

@@ -17,7 +17,7 @@ fm.register(8, fm.fpioa.UART1_TX)
 
 uart = UART(UART.UART1, 9600, read_buf_len=4096)
 
-write_bytes = 'Hype boy yo!~'
+write_bytes = 'Hi!~'
 last_time = time.ticks_ms()
 read_data = 'Original'
 
