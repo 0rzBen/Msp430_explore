@@ -10,7 +10,7 @@ u8 buffer_index = 0;
 volatile unsigned int i;
 void delay()
 {
-    for(i=50000;i>0;i--);
+    for(i=30000;i>0;i--);
 }
 
 int main(void)
@@ -23,7 +23,7 @@ int main(void)
     P1REN |= BIT1;
     P1OUT |= BIT1;
 
-    OLED_ShowString(0, 1, "Recognition", 8);
+    OLED_ShowString(0, 1, "Result:", 8);
     int cnt = 0;
 
     while(1)
